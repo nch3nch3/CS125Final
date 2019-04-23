@@ -54,11 +54,11 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/lastestLaunch"
+            android:id="@+id/latestLaunch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Lastest" />
+            android:text="Latest" />
 
         <Button
             android:id="@+id/nextLaunch"
