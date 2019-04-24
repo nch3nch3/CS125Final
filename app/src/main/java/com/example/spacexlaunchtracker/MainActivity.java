@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.lang.Math;
@@ -31,9 +32,13 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "Random Launch button clicked");
             updateText('r');
         });
-        //These function handle the buttons
-
         //Can you write a function that takes care of the "launchFinder" button and the Flight Mission field
+        final Button flightNo = findViewById(R.id.launchFinder);
+        random.setOnClickListener(v -> {
+            Log.d(TAG, "Flight number search initiated");
+            updateText();
+        });
+        //These function handle the buttons
     }
     public void updateText(final char inputCase) {
         //this function handles random, next, and latest launch via characters which represent each case
@@ -43,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         //This is for testing code is for testing
     }
     public void updateText(final int input) {
-        //This method takes the flight number from the plainText field.
+        EditText flight = findViewById(R.id.missionInput);
+        String number =  "Flight Number : " + flight.getText().toString();
+        ((TextView) findViewById(R.id.flightNumber)).setText(number);
     }
 }
