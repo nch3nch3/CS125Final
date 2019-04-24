@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void updateText(final int input) {
         //This method takes the flight number from the plainText field.
-        String caption = ("This is a your number: " + input);
-        ((TextView) findViewById(R.id.caption)).setText(caption);
+        String caption = ("Flight Number Provided :  " + input);
+        ((TextView) findViewById(R.id.flightNumber)).setText(caption);
     }
 }
