@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.lang.Math;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,12 +34,22 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "Random Launch button clicked");
             updateText('r');
         });
-        final Button flightNo = findViewById(R.id.launchFinder);
-        random.setOnClickListener(v -> {
-            Log.d(TAG, "Flight number search initiated");
-            // update function with int input needs to be updated here
+        final Button findMission = findViewById(R.id.launchFinder);
+        findMission.setOnClickListener(v -> {
+            Log.d(TAG, "Random Launch button clicked");
+            EditText textHere = findViewById(R.id.missionInput);
+            String numberAsString = textHere.getText().toString();
+            try {
+                int number = Integer.parseInt(numberAsString);
+                updateText(number);
+            } catch (Exception e) {
+                String caption = ("Input is invalid");
+                ((TextView) findViewById(R.id.caption)).setText(caption);
+            }
         });
         //These function handle the buttons
+
+        //Can you write a function that takes care of the "launchFinder" button and the Flight Mission field
     }
     public void updateText(final char inputCase) {
         //this function handles random, next, and latest launch via characters which represent each case
@@ -47,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
         //This is for testing code is for testing
     }
     public void updateText(final int input) {
-        EditText flight = findViewById(R.id.missionInput);
-        String number =  "Flight Number : " + flight.getText().toString();
-        ((TextView) findViewById(R.id.flightNumber)).setText(number);
+        //This method takes the flight number from the plainText field.
+        String caption = ("This is a your number: " + input);
+        ((TextView) findViewById(R.id.caption)).setText(caption);
     }
 }
