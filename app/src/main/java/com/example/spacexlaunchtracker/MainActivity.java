@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //These function handle the buttons
-
-        //Can you write a function that takes care of the "launchFinder" button and the Flight Mission field
     }
     public void updateText(final char inputCase) {
         //this function handles random, next, and latest launch via characters which represent each case
