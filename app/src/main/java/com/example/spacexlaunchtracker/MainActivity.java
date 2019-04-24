@@ -32,11 +32,10 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "Random Launch button clicked");
             updateText('r');
         });
-        //Can you write a function that takes care of the "launchFinder" button and the Flight Mission field
         final Button flightNo = findViewById(R.id.launchFinder);
         random.setOnClickListener(v -> {
             Log.d(TAG, "Flight number search initiated");
-            updateText();
+            // update function with int input needs to be updated here
         });
         //These function handle the buttons
     }
