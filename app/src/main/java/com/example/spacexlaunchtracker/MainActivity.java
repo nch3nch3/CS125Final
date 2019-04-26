@@ -7,18 +7,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.spacexlaunchtracker.Tasks;
 
 import java.lang.Math;
 
 public class MainActivity extends AppCompatActivity {
     /** Default logging tag for messages from the main activity. */
     private static final String TAG = "App.main:";
+    protected RequestQueue requestQueue;
+    private Tasks task = new Tasks();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        requestQueue = Volley.newRequestQueue(this);
         final Button latest = findViewById(R.id.latestLaunch);
         latest.setOnClickListener(v -> {
             Log.d(TAG, "latest launch button clicked");
@@ -50,15 +57,39 @@ public class MainActivity extends AppCompatActivity {
         //These function handle the buttons
     }
     public void updateText(final char inputCase) {
-        //this function handles random, next, and latest launch via characters which represent each case
-        double randomNumber = Math.random();
-        String caption = ("This is a number for testing: " + randomNumber);
+        String caption = "If you are seeing this, something went very wrong!";
+        if (inputCase == 'l') {
+            String url = "https://api.spacexdata.com/v3/launches/latest";
+            startAPIcall(url);
+            caption = task.stringToReturn();
+        }
+        if (inputCase == 'n') {
+            String url = "https://api.spacexdata.com/v3/launches/next";
+            startAPIcall(url);
+            caption = task.stringToReturn();
+        }
         ((TextView) findViewById(R.id.caption)).setText(caption);
-        //This is for testing code is for testing
     }
     public void updateText(final int input) {
         //This method takes the flight number from the plainText field.
         String caption = ("Flight Number Provided :  " + input);
         ((TextView) findViewById(R.id.flightNumber)).setText(caption);
+    }
+    public void startAPIcall(String url) {
+        try {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.GET,
+                    url,
+                    null,
+                    response -> {
+                        Log.d(TAG, response.toString());
+                        task.jsonParser(response.toString());
+                    }, error -> Log.w(TAG, error.toString()));
+            requestQueue.add(jsonObjectRequest);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            Log.w(TAG, "Error calling API");
+            System.out.println("Something went wrong");
+        }
     }
 }
