@@ -40,8 +40,6 @@
             android:layout_marginRight="90dp"
             android:layout_marginBottom="55dp"
             android:text="Find"
-            android:background="@android:color/holo_purple"
-            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -60,8 +58,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:color/black"
-            android:textColor="@android:color/white"
             android:text="Latest" />
 
         <Button
@@ -76,8 +72,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:color/black"
-            android:textColor="@android:color/white"
             android:text="Random" />
     </LinearLayout>
 
@@ -104,11 +98,5 @@
         </ScrollView>
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/flightNumber"
-        android:layout_width="match_parent"
-        android:layout_height="49dp"
-        android:text="TextView" />
 
 </LinearLayout>
