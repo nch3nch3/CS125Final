@@ -13,7 +13,6 @@ public class Tasks {
     private String launchSite;
     private int flightNumber;
     private int latestFlightNumber;
-    private boolean recovery;
 
     /**This function is called to pick an random integer.
      * @return the chosen integer.
@@ -32,8 +31,7 @@ public class Tasks {
                 + "Mission Name: " + nameOfMission + "\n"
                 + "Launch Date UTC: " + timeOfMission + "\n"
                 + "Rocket Used: " + rocketUsed + "\n"
-                + "Launch Site: " + launchSite + "\n"
-                + "Recovered: " + recovery;
+                + "Launch Site: " + launchSite + "\n";
     }
 
     /**This takes parsed information from it's helpers and stores them.
@@ -45,7 +43,6 @@ public class Tasks {
         rocketUsed = rocketData(json);
         launchSite = launchSite(json);
         flightNumber = flightNumber(json);
-        recovery = recovery(json);
     }
     //These later functions are the helper functions that actually parse the json.
     private String missionName(String json) {
@@ -112,21 +109,8 @@ public class Tasks {
     public void setUpMaxFlightNum(String json) {
         latestFlightNumber = flightNumber(json);
     }
-    public boolean recovery(String json) {
-        try {
-            JsonParser parser = new JsonParser();
-            return parser.parse(json)
-                    .getAsJsonObject()
-                    .getAsJsonObject()
-                    .getAsJsonObject("recovery")
-                    .get("recovered")
-                    .getAsBoolean();
-        } catch (Exception e) {
-            return false;
-        }
-    }
     /**
-     * Boolean to check which rocket was used
+     * Boolean to check if the FalconHeavy was used
      * @return boolean value
      */
     public boolean isFalconHeavy() {
@@ -137,6 +121,10 @@ public class Tasks {
         }
         return false;
     }
+    /**
+     * Boolean to check if the FalconHeavy was used
+     * @return boolean value
+     */
     public boolean isFalcon9() {
         if (rocketUsed == null) {
             return false;
