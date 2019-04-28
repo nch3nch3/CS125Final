@@ -101,7 +101,7 @@
                 <TextView
                     android:id="@+id/caption"
                     android:layout_width="match_parent"
-                    android:layout_height="66dp"
+                    android:layout_height="152dp"
                     android:text="TextView" />
             </LinearLayout>
         </ScrollView>

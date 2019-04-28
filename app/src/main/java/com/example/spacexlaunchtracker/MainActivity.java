@@ -11,9 +11,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.spacexlaunchtracker.Tasks;
-
-import java.lang.Math;
 
 public class MainActivity extends AppCompatActivity {
     /** Default logging tag for messages from the main activity. */
@@ -27,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         requestQueue = Volley.newRequestQueue(this);
         firstApiCall();
+        //API is called on creation to ensure an accurate range.
         final Button latest = findViewById(R.id.latestLaunch);
         latest.setOnClickListener(v -> {
             Log.d(TAG, "latest launch button clicked");
@@ -61,12 +59,19 @@ public class MainActivity extends AppCompatActivity {
         });
         //These function handle the buttons
     }
+
+    /**This function updates the text.
+     */
     public void updateText() {
         String caption;
         caption = task.stringToReturn();
         System.out.println(caption);
         ((TextView) findViewById(R.id.caption)).setText(caption);
     }
+
+    /**This function handles the API call and call the function to update text.
+     * @param url is the URL that is being called
+     */
     public void startAPIcall(String url) {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
@@ -89,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Something went wrong");
         }
     }
+
+    /**This function is for the initial set-up to make sure when finding a random launch,
+     * the range of possible launches is up to date.
+     */
     public void firstApiCall() {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
