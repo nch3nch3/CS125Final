@@ -1,8 +1,10 @@
 package com.example.spacexlaunchtracker;
 
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d(TAG, response.toString());
                         task.jsonParser(response.toString());
                         updateText();
+                        updateImage();
                     }, error -> {
                         Log.w(TAG, error.toString());
                         String caption = ("Input is invalid");
@@ -122,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void updateImage() {
         if (task.isFalconHeavy()) {
-            findViewById(R.id.)
+            findViewById(R.id.FalconHeavy).setVisibility(View.VISIBLE);
         }
     }
 }
