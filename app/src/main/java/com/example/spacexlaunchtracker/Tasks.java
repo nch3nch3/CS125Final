@@ -127,19 +127,6 @@ public class Tasks {
     }
     /**
      * Boolean to check which rocket was used
-     * @param json input provided by API
-     * @return boolean value
-     */
-    public boolean isFalconNine(String json) {
-        if (rocketUsed == null) {
-            return false;
-        } else if (rocketUsed.equals("Falcon 9")) {
-            return true;
-        }
-        return false;
-    }
-    /**
-     * Boolean to check which rocket was used
      * @return boolean value
      */
     public boolean isFalconHeavy() {
