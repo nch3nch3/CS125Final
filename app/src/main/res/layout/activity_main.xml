@@ -103,6 +103,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="152dp"
                     android:text="TextView" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="166dp"
+                    app:srcCompat="@mipmap/ic_launcher_foreground"
+                    android:visibility="invisible"
+                    android:contentDescription="TODO" />
+
             </LinearLayout>
         </ScrollView>
 

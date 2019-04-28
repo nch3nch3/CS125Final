@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -117,6 +118,11 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(e.toString());
             Log.w(TAG, "Error calling API");
             System.out.println("Something went wrong");
+        }
+    }
+    public void updateImage() {
+        if (task.isFalconHeavy()) {
+            findViewById(R.id.)
         }
     }
 }
