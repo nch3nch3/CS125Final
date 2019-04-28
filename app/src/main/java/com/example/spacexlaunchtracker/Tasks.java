@@ -1,23 +1,8 @@
 package com.example.spacexlaunchtracker;
-import android.app.Activity;
-import android.app.DownloadManager;
-import android.content.Context;
-import android.util.Log;
-import android.view.View;
 
-import com.android.volley.Response;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.JsonElement;
-import com.android.volley.NetworkResponse;
-import com.android.volley.Request;
-import com.android.volley.VolleyError;
-import com.android.volley.RequestQueue;
+
+import java.util.Random;
 
 
 public class Tasks {
@@ -27,7 +12,12 @@ public class Tasks {
     private String rocketUsed;
     private String launchSite;
     private int flightNumber;
+    private int latestFlightNumber = 87;
 
+    public int randomMissionPicker() {
+        Random numberPicker = new Random();
+        return numberPicker.nextInt(latestFlightNumber) + 1;
+    }
     public String stringToReturn() {
         return "Flight Number: " + flightNumber + "\n"
                 + "Mission Name: " + nameOfMission + "\n"
@@ -99,5 +89,8 @@ public class Tasks {
         } catch (Exception e) {
             return -1;
         }
+    }
+    public void setUpMaxFlightNum(String json) {
+        latestFlightNumber = flightNumber(json);
     }
 }

@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         requestQueue = Volley.newRequestQueue(this);
+        firstApiCall();
         final Button latest = findViewById(R.id.latestLaunch);
         latest.setOnClickListener(v -> {
             Log.d(TAG, "latest launch button clicked");
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         final Button random = findViewById(R.id.randomLaunch);
         random.setOnClickListener(v -> {
             Log.d(TAG, "Random Launch button clicked");
-            updateText();
+            String url = "https://api.spacexdata.com/v3/launches/" + task.randomMissionPicker();
+            startAPIcall(url);
         });
         final Button findMission = findViewById(R.id.launchFinder);
         findMission.setOnClickListener(v -> {
@@ -80,6 +82,27 @@ public class MainActivity extends AppCompatActivity {
                         String caption = ("Input is invalid");
                         ((TextView) findViewById(R.id.caption)).setText(caption);
                     });
+            requestQueue.add(jsonObjectRequest);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            Log.w(TAG, "Error calling API");
+            System.out.println("Something went wrong");
+        }
+    }
+    public void firstApiCall() {
+        try {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.GET,
+                    "https://api.spacexdata.com/v3/launches/latest",
+                    null,
+                    response -> {
+                        Log.d(TAG, response.toString());
+                        task.setUpMaxFlightNum(response.toString());
+                    }, error -> {
+                Log.w(TAG, error.toString());
+                String caption = ("Something went wrong");
+                ((TextView) findViewById(R.id.caption)).setText(caption);
+            });
             requestQueue.add(jsonObjectRequest);
         } catch (Exception e) {
             System.out.println(e.toString());
