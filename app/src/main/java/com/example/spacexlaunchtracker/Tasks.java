@@ -150,5 +150,13 @@ public class Tasks {
         }
         return false;
     }
+    public boolean isFalcon9() {
+        if (rocketUsed == null) {
+            return false;
+        } else if (rocketUsed.equals("Falcon 9")) {
+            return true;
+        }
+        return false;
+    }
 
 }

@@ -107,8 +107,15 @@
                 <ImageView
                     android:id="@+id/FalconHeavy"
                     android:layout_width="match_parent"
-                    android:layout_height="166dp"
+                    android:layout_height="180dp"
                     android:contentDescription="TODO"
+                    android:visibility="invisible"
+                    app:srcCompat="@mipmap/ic_launcher_foreground" />
+
+                <ImageView
+                    android:id="@+id/FalconNine"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
                     android:visibility="invisible"
                     app:srcCompat="@mipmap/ic_launcher_foreground" />
 

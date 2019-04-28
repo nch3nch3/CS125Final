@@ -126,6 +126,13 @@ public class MainActivity extends AppCompatActivity {
     public void updateImage() {
         if (task.isFalconHeavy()) {
             findViewById(R.id.FalconHeavy).setVisibility(View.VISIBLE);
+            findViewById(R.id.FalconNine).setVisibility(View.INVISIBLE);
+        } else if (task.isFalcon9()) {
+            findViewById(R.id.FalconHeavy).setVisibility(View.INVISIBLE);
+            findViewById(R.id.FalconNine).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.FalconHeavy).setVisibility(View.INVISIBLE);
+            findViewById(R.id.FalconNine).setVisibility(View.INVISIBLE);
         }
     }
 }
