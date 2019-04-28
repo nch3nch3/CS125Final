@@ -58,6 +58,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:text="Latest" />
 
         <Button
@@ -65,6 +68,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:text="Next" />
 
         <Button
@@ -72,6 +78,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:text="Random" />
     </LinearLayout>
 
